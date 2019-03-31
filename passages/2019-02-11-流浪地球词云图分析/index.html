@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="Dong Yuanxin">
+  
+  
+  <title>流浪地球猫眼短评可视化分析 | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="产品,可视化分析,爬虫,">
+  
+
+  
+  <meta name="description" content="杨政的小站">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz","appkey":"WaR7nrzhliHj9aVwdQzkdlGd","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "Dong Yuanxin",
+    share: {"twitter":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">杨政</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 一个人写东西的地方</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/wyzlove" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-02-11
+    </span>
+    
+      <span>
+        | <a href="/categories/产品/"><i class="fa fa-bookmark"></i>产品</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    流浪地球猫眼短评可视化分析
+  </h1>
+  
+    <div class="passage-cover">
+      <figure style="background-image:url(https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/echarts.png);"></figure>
+    </div>
+  
+  <article class="passage-article">
+    <p>《流浪地球》突然越来越火……</p>
+<p>嗯 主旋律 总能激发人原始的感动</p>
+<p>所以趁这会儿有时间，爬一爬影评，试着可视化分析下，看看舆论的风怎么吹~</p>
+<h2 id="1-接口"><a href="#1-接口" class="headerlink" title="1 接口"></a>1 接口</h2><p>直接选择猫眼的短评接口，方便。</p>
+<p>记得之前一直是<code>http://m.maoyan.com/mmdb/comments/movie/&lt;movieId&gt;.json</code>。今儿试了下<code>cmts</code>字段总是空的，换了代理Ip也没用。无奈只能硬着头皮，去<code>http://m.maoyan.com/movie/248906/comments?_v_=yes</code>去看看是不是改了新接口</p>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E7%8C%AB%E7%9C%BC%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%831.jpg" alt="流浪地球-接口1"></p>
+<p>没错了，分页加载的新接口<code>http://m.maoyan.com/review/v2/comments.json?movieId=248906&amp;userId=-1&amp;offset=420&amp;limit=15&amp;ts=1549767416000&amp;type=3</code></p>
+<h2 id="2-接口参数分析"><a href="#2-接口参数分析" class="headerlink" title="2 接口参数分析"></a>2 接口参数分析</h2><table>
+<thead>
+<tr>
+<th style="text-align:right">参数</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:left">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">movieId</td>
+<td style="text-align:center">电影id</td>
+<td style="text-align:left">248906</td>
+</tr>
+<tr>
+<td style="text-align:right">offset</td>
+<td style="text-align:center">分页起始值</td>
+<td style="text-align:left">从0开始，每次偏移量limit</td>
+</tr>
+<tr>
+<td style="text-align:right">limit</td>
+<td style="text-align:center">每页数据</td>
+<td style="text-align:left">15</td>
+</tr>
+<tr>
+<td style="text-align:right">ts</td>
+<td style="text-align:center">初次请求接口时刻的时间戳</td>
+<td style="text-align:left">/</td>
+</tr>
+</tbody>
+</table>
+<p>每页下拉刷新会请求limit條（默认是15条，可以修改）数据。为了方便，另定义一个参数page，这样<code>offset = (page - 1)*limit</code>。其他参数按默认值即可，对结果不影响。</p>
+<h2 id="3-返回数据接口分析"><a href="#3-返回数据接口分析" class="headerlink" title="3 返回数据接口分析"></a>3 返回数据接口分析</h2><p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E7%8C%AB%E7%9C%BC%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%832.jpg" alt="流浪地球-接口1"></p>
+<p><code>data.comments</code>字段即是我们需要，共15条。<code>paging.hasMore</code>按字义理解就是是否还有下页，这个新字段很有用，帮助后面做循环条件。</p>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E7%8C%AB%E7%9C%BC%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%833.jpg" alt="流浪地球-接口2"></p>
+<p>新的短评接口中，有分析意义的字段：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">参数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">content</td>
+<td style="text-align:center">短评内容</td>
+</tr>
+<tr>
+<td style="text-align:right">gender</td>
+<td style="text-align:center">性别</td>
+</tr>
+<tr>
+<td style="text-align:right">nick</td>
+<td style="text-align:center">昵称</td>
+</tr>
+<tr>
+<td style="text-align:right">userLevel</td>
+<td style="text-align:center">用户等级</td>
+</tr>
+<tr>
+<td style="text-align:right">time</td>
+<td style="text-align:center">评论时刻的时间戳</td>
+</tr>
+</tbody>
+</table>
+<p>所以大致计划不变，根据这些字段将依次从短评词云图、每日短评数、性别分布、等级分布、评分五个方面对下面爬取的数据进行简单的视图分析。</p>
+<blockquote>
+<p>新接口没有城市字段了</p>
+</blockquote>
+<h2 id="4-数据爬取"><a href="#4-数据爬取" class="headerlink" title="4 数据爬取"></a>4 数据爬取</h2><h3 id="1-maoyan-py"><a href="#1-maoyan-py" class="headerlink" title="1 maoyan.py"></a>1 maoyan.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># Created by yangzheng on 2019/02/10</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json,os</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> unicodecsv <span class="keyword">as</span> ucsv</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> wandou_http_python_request <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaoYan_CommentsParse</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,movieId,uri,folder)</span>:</span></span><br><span class="line">        self.movieId = movieId</span><br><span class="line">        self.uri = uri</span><br><span class="line">        self.folder = folder</span><br><span class="line">        self.timestamp = int(time.time() * <span class="number">1000</span>) <span class="comment">#当前时间戳</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_json</span><span class="params">(self,page,limit)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        旧接口 requestUri = self.uri + "?offset=%s&amp;startTime=%s"%((page-1)*limit,startTime)</span></span><br><span class="line"><span class="string">        :param page: 頁數</span></span><br><span class="line"><span class="string">        :param limit: 每页数据个数</span></span><br><span class="line"><span class="string">        :return: 返回jsonContent</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        requestUri = self.uri + <span class="string">"?movieId=%s&amp;userId=-1&amp;offset=%s&amp;limit=%s&amp;ts=%s&amp;level=2&amp;type=3"</span> % (self.movieId,(page - <span class="number">1</span>) * limit,limit,self.timestamp)</span><br><span class="line">        r0 = responseWithIpPool(requestUri)</span><br><span class="line">        response = r0.response()</span><br><span class="line">        <span class="comment">#response = requests.get(requestUri,headers = self.headers,proxies = self.proxies)</span></span><br><span class="line">        json_response = json.loads(response.text,encoding=<span class="string">"utf-8"</span>)</span><br><span class="line">        <span class="comment">#print json_response</span></span><br><span class="line">        <span class="keyword">return</span> json_response</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">(self,page,limit)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        1 解析json各字段 2 调用save_file(self,datalist)保存本地.csv 3 返回hasMore 用于判断循环结束</span></span><br><span class="line"><span class="string">        :param page: 頁數</span></span><br><span class="line"><span class="string">        :param limit: 每页数据个数</span></span><br><span class="line"><span class="string">        :return: hasMore</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        response = self.get_json(page,limit)</span><br><span class="line">        json_response = response[<span class="string">"data"</span>][<span class="string">"comments"</span>]</span><br><span class="line">        hasMore = response[<span class="string">"paging"</span>][<span class="string">"hasMore"</span>]</span><br><span class="line">        datalist = []</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> json_response:</span><br><span class="line">                localTime = self._from_ts(item[<span class="string">"time"</span>]) <span class="comment">#时间戳转成评论日期</span></span><br><span class="line">                <span class="comment">#cityName = item["cityName"]</span></span><br><span class="line">                content = item[<span class="string">"content"</span>]</span><br><span class="line">                gender = item[<span class="string">"gender"</span>]</span><br><span class="line">                nick = item[<span class="string">"nick"</span>]</span><br><span class="line">                userLevel = item[<span class="string">"userLevel"</span>]</span><br><span class="line">                score = item[<span class="string">"score"</span>]</span><br><span class="line">                datalist.append([localTime,nick, gender, userLevel, score, content])</span><br><span class="line">            <span class="comment">#return datalist</span></span><br><span class="line">            self.save_file(datalist)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> e.message</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            <span class="keyword">return</span> hasMore</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_file</span><span class="params">(self,datalist)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        生成本地.csv</span></span><br><span class="line"><span class="string">        :param datalist:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        file_path = self.folder + <span class="string">r'/TheWanderingEarth1.csv'</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(file_path):</span><br><span class="line">                name = [<span class="string">'评论日期'</span>, <span class="string">'昵称'</span>, <span class="string">'性别'</span>, <span class="string">'猫眼等级'</span>, <span class="string">'评分'</span>, <span class="string">'评论内容'</span>]</span><br><span class="line">                data_frame = pd.DataFrame(columns = name, data = datalist)</span><br><span class="line">                data_frame.to_csv(file_path, encoding=<span class="string">'utf-8'</span>, index=<span class="literal">False</span>,)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">with</span> open(file_path, <span class="string">'a+'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">                    writer = ucsv.writer(fp,errors=<span class="string">"ignore"</span>)</span><br><span class="line">                    writer.writerows(datalist)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> e.message</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_from_ts</span><span class="params">(self,ts)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        时间戳转换成%Y--%m--%d格式</span></span><br><span class="line"><span class="string">        :param ts:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        localtime = time.localtime(float(ts/<span class="number">1000</span>))</span><br><span class="line">        time_style = time.strftime(<span class="string">"%Y--%m--%d"</span>,localtime)</span><br><span class="line">        <span class="keyword">return</span> time_style</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-wandou-http-python-request-py"><a href="#2-wandou-http-python-request-py" class="headerlink" title="2 wandou_http_python_request.py"></a>2 wandou_http_python_request.py</h3><p>调试的时候发现被屏蔽了，最后在网上找了个<a href="https://h.wandouip.com/" target="_blank" rel="noopener">豌豆代理</a>。注册送的IP够用了。看了文档，把演示接口改下了，使用时调用<code>response</code>方法即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">在使用requests 时,</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">* 需要安装 pip install -U 'requests[socks]'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">* 提取代理是选择socks5 协议</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">* 为运行程序的机器添加白名单</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">responseWithIpPool</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,url)</span>:</span></span><br><span class="line">        self.url = url</span><br><span class="line">        self.username = <span class="string">'944814414@qq.com'</span></span><br><span class="line">        self.password = <span class="string">'Yz900708'</span></span><br><span class="line">        self.headers = &#123;</span><br><span class="line">            <span class="string">'Proxy-Authorization'</span>: <span class="string">'Basic %s'</span> % (self._base_code(self.username, self.password))</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_base_code</span><span class="params">(self,username, password)</span>:</span></span><br><span class="line">        str = <span class="string">'%s:%s'</span> % (username, password)</span><br><span class="line">        encodestr = base64.b64encode(str.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'%s'</span> % encodestr.decode()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_ip</span><span class="params">(self)</span>:</span></span><br><span class="line">        ip_list = []</span><br><span class="line">        api = <span class="string">"http://api.wandoudl.com/api/ip?app_key=d75f1bcb53449d1dceefd5a15f485a28&amp;pack=2145&amp;num=10&amp;xy=1&amp;type=2&amp;lb=\r\n&amp;mr=1&amp;"</span></span><br><span class="line">        json_response = json.loads(requests.get(api).text, encoding=<span class="string">"utf-8"</span>)</span><br><span class="line">        code = json_response[<span class="string">"code"</span>]</span><br><span class="line">        data = json_response[<span class="string">"data"</span>]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span>(code):</span><br><span class="line">                <span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">                    ip = item[<span class="string">"ip"</span>]</span><br><span class="line">                    port = item[<span class="string">"port"</span>]</span><br><span class="line">                    ip_port = ip + <span class="string">":"</span> + str(port)</span><br><span class="line">                    ip_list.append(ip_port)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> e.message</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"获取代理失敗"</span></span><br><span class="line">            ip_list = [<span class="string">"122.152.227.156:16816"</span>]</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            <span class="keyword">return</span> ip_list</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">response</span><span class="params">(self)</span>:</span></span><br><span class="line">        ip_list = self.get_ip()</span><br><span class="line">        ip_port = random.choice(ip_list)</span><br><span class="line">        proxy = &#123;</span><br><span class="line">            <span class="string">'http'</span>: <span class="string">'http://&#123;&#125;'</span>.format(ip_port),</span><br><span class="line">            <span class="string">'https'</span>: <span class="string">'https://&#123;&#125;'</span>.format(ip_port)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            r = requests.get(self.url,proxies=proxy, headers=self.headers)</span><br><span class="line">            <span class="keyword">if</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">                <span class="keyword">return</span> r</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> e.message</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"————————重新获取一次ip————————"</span></span><br><span class="line">            self.response()</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-main-py"><a href="#3-main-py" class="headerlink" title="3 main.py"></a>3 main.py</h3><p>启动。为防止又被反，建议time.sleep(randint(1,2))，虽然效果可能不大。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># Created by yangzheng on 2019/02/10</span></span><br><span class="line"><span class="keyword">from</span> maoyan <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line"><span class="comment">#headers = &#123;"User-Agent": UserAgent(verify_ssl=False).random&#125;</span></span><br><span class="line"><span class="comment"># uri = "http://m.maoyan.com/mmdb/comments/movie/248906.json"</span></span><br><span class="line">uri = <span class="string">"http://m.maoyan.com/review/v2/comments.json"</span></span><br><span class="line">folder = <span class="string">"D:/pythonproject/MaoyanSpider"</span></span><br><span class="line">movieId = <span class="string">"248906"</span></span><br><span class="line">c0 = MaoYan_CommentsParse(movieId, uri, folder)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    hasMore = <span class="literal">True</span></span><br><span class="line">    page = <span class="number">1</span></span><br><span class="line">    limit = <span class="number">15</span></span><br><span class="line">    <span class="keyword">while</span>(hasMore):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"--------------------------------爬取第%s页评论,hasMore:%s-------------------------------"</span>%(page,hasMore)</span><br><span class="line">        hasMore = c0.get_data(page,limit)</span><br><span class="line">        page = page + <span class="number">1</span></span><br><span class="line">        <span class="comment">#time.sleep(randint(1,2))</span></span><br></pre></td></tr></table></figure>
+<p>最后，发现爬到69页就停了。差不多1000条的短评。想起来之前的接口也这样，也就作罢，应该是接口本身的限制吧</p>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/csv%E9%A2%84%E8%A7%88.jpg" alt="csv预览"></p>
+<h2 id="5-可视化分析"><a href="#5-可视化分析" class="headerlink" title="5 可视化分析"></a>5 可视化分析</h2><h3 id="1-性别分布"><a href="#1-性别分布" class="headerlink" title="1 性别分布"></a>1 性别分布</h3><p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E6%80%A7%E5%88%AB%E9%A5%BC%E5%9B%BE.png" alt="性别饼图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 评论者性别分布可视化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sex_distribution</span><span class="params">(gender)</span>:</span></span><br><span class="line">    <span class="comment"># print(gender)</span></span><br><span class="line">    <span class="keyword">from</span> pyecharts <span class="keyword">import</span> Pie</span><br><span class="line">    list_num = []</span><br><span class="line">    list_num.append(gender.count(<span class="string">'0'</span>))  <span class="comment"># 未知</span></span><br><span class="line">    list_num.append(gender.count(<span class="string">'1'</span>))  <span class="comment"># 男</span></span><br><span class="line">    list_num.append(gender.count(<span class="string">'2'</span>))  <span class="comment"># 女</span></span><br><span class="line">    attr = [<span class="string">"其他"</span>, <span class="string">"男"</span>, <span class="string">"女"</span>]</span><br><span class="line">    pie = Pie(<span class="string">"性别饼图"</span>)</span><br><span class="line">    pie.add(<span class="string">""</span>, attr, list_num, is_label_show=<span class="literal">True</span>)</span><br><span class="line">    pie.render(<span class="string">"D:\pythonproject\MaoyanSpider\picture\sex_pie.html"</span>)</span><br></pre></td></tr></table></figure>
+<p>除了未注明性别的，男女比例接近1.6:1，跟电影风格蛮一致，比较硬核</p>
+<h3 id="2-等级、评分可视化"><a href="#2-等级、评分可视化" class="headerlink" title="2 等级、评分可视化"></a>2 等级、评分可视化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用户猫眼等级、评分可视化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">level_score_visualization</span><span class="params">(userLevel, score)</span>:</span></span><br><span class="line">    <span class="keyword">from</span> pyecharts <span class="keyword">import</span> Pie</span><br><span class="line">    userLevel_list = list(set(userLevel))</span><br><span class="line">    userLevel_num = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(userLevel_list)):</span><br><span class="line">        userLevel_num.append(userLevel.count(userLevel_list[i]))</span><br><span class="line"></span><br><span class="line">    score_list = list(set(score))</span><br><span class="line">    score_num = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(score_list)):</span><br><span class="line">        score_num.append(score.count(score_list[i]))</span><br><span class="line"></span><br><span class="line">    pie01 = Pie(<span class="string">"等级环状饼图"</span>, title_pos=<span class="string">'center'</span>, width=<span class="number">900</span>)</span><br><span class="line">    pie01.add(</span><br><span class="line">        <span class="string">"等级"</span>,</span><br><span class="line">        userLevel_list,</span><br><span class="line">        userLevel_num,</span><br><span class="line">        radius=[<span class="number">40</span>, <span class="number">75</span>],</span><br><span class="line">        label_text_color=<span class="literal">None</span>,</span><br><span class="line">        is_label_show=<span class="literal">True</span>,</span><br><span class="line">        legend_orient=<span class="string">"vertical"</span>,</span><br><span class="line">        legend_pos=<span class="string">"left"</span>,</span><br><span class="line">    )</span><br><span class="line">    pie01.render(<span class="string">"D:\pythonproject\MaoyanSpider\picture\level_pie.html"</span>)</span><br><span class="line">    pie02 = Pie(<span class="string">"评分玫瑰饼图"</span>, title_pos=<span class="string">'center'</span>, width=<span class="number">900</span>)</span><br><span class="line">    pie02.add(</span><br><span class="line">        <span class="string">"评分"</span>,</span><br><span class="line">        score_list,</span><br><span class="line">        score_num,</span><br><span class="line">        center=[<span class="number">50</span>, <span class="number">50</span>],</span><br><span class="line">        is_random=<span class="literal">True</span>,</span><br><span class="line">        radius=[<span class="number">30</span>, <span class="number">75</span>],</span><br><span class="line">        rosetype=<span class="string">"area"</span>,</span><br><span class="line">        is_legend_show=<span class="literal">False</span>,</span><br><span class="line">        is_label_show=<span class="literal">True</span>,</span><br><span class="line">    )</span><br><span class="line">    pie02.render(<span class="string">"D:\pythonproject\MaoyanSpider\picture\score_pie.html"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E7%AD%89%E7%BA%A7%E7%8E%AF%E7%8A%B6%E9%A5%BC%E5%9B%BE.png" alt="等级换装饼图"></p>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E8%AF%84%E5%88%86%E7%8E%AB%E7%91%B0%E9%A5%BC%E5%9B%BE.png" alt="评分玫瑰饼图"></p>
+<p>这里没有做数据交叉，比如分布最多的等级2用户评分分布怎样？不过这里的<strong>等级分布</strong>还是挺值得回味，2级用户是评论主力，占到近一半。1级、3级评分秋色。反倒是高级用户4级、5级的占比寥寥，不知道是不是都去潜水了？</p>
+<p><strong>评分</strong>自不用说，跟预想的一样，满分10分的用户占到6成多。看来舆论对《流浪地球》的评价一点不吝啬。</p>
+<h3 id="3-每日评论总数可视化"><a href="#3-每日评论总数可视化" class="headerlink" title="3 每日评论总数可视化"></a>3 每日评论总数可视化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每日评论总数可视化分析</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time_num_visualization</span><span class="params">(time)</span>:</span></span><br><span class="line">    <span class="keyword">from</span> pyecharts <span class="keyword">import</span> Line</span><br><span class="line">    time_list = list(set(time))</span><br><span class="line">    time_dict = &#123;time_list[i]: <span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list))&#125;</span><br><span class="line">    time_num = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list)):</span><br><span class="line">        time_dict[time_list[i]] = time.count(time_list[i])</span><br><span class="line">    <span class="comment"># 根据数量(字典的键值)排序</span></span><br><span class="line">    sort_dict = sorted(time_dict.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">0</span>], reverse=<span class="literal">False</span>)</span><br><span class="line">    time_name = []</span><br><span class="line">    time_num = []</span><br><span class="line">    print(sort_dict)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(sort_dict)):</span><br><span class="line">        time_name.append(sort_dict[i][<span class="number">0</span>])</span><br><span class="line">        time_num.append(sort_dict[i][<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    line = Line(<span class="string">"评论数量日期折线图"</span>)</span><br><span class="line">    line.add(</span><br><span class="line">        <span class="string">"日期-评论数"</span>,</span><br><span class="line">        time_name,</span><br><span class="line">        time_num,</span><br><span class="line">        is_fill=<span class="literal">True</span>,</span><br><span class="line">        area_color=<span class="string">"#000"</span>,</span><br><span class="line">        area_opacity=<span class="number">0.3</span>,</span><br><span class="line">        is_smooth=<span class="literal">True</span>,</span><br><span class="line">    )</span><br><span class="line">    line.render(<span class="string">"D:\pythonproject\MaoyanSpider\picture\c_num_line.html"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E8%AF%84%E8%AE%BA%E6%95%B0%E9%87%8F%E6%97%A5%E6%9C%9F%E6%8A%98%E7%BA%BF%E5%9B%BE%20(1" alt="评论数量日期折现图">.png)</p>
+<p>评论的数据样本还是太少了，差不多1k条数据仅仅是近4天的。不过很容发现自上映后，02-08短暂的退潮后，02-09短评数据猛增，算是厚积薄发的自来水也不一定~</p>
+<h3 id="4-社会我佩奇"><a href="#4-社会我佩奇" class="headerlink" title="4 社会我佩奇"></a>4 社会我佩奇</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成词云图</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_wordcloud</span><span class="params">(text1)</span>:</span></span><br><span class="line">    text1 = text1.replace(<span class="string">"流浪地球"</span>, <span class="string">""</span>)</span><br><span class="line">    alice_mask = np.array(Image.open(d + <span class="string">r"/static/alice_mask.jpg"</span>))</span><br><span class="line">    <span class="comment">#alice_mask = plt.imread(d + r"/static/alice_mask.jpg")</span></span><br><span class="line">    <span class="comment"># 生成</span></span><br><span class="line">    wc = WordCloud(  <span class="comment"># FFFAE3</span></span><br><span class="line">        background_color=<span class="string">"white"</span>,  <span class="comment"># 设置背景为白色，默认为黑色</span></span><br><span class="line">        width=<span class="number">890</span>,  <span class="comment"># 设置图片的宽度</span></span><br><span class="line">        height=<span class="number">600</span>,  <span class="comment"># 设置图片的高度</span></span><br><span class="line">        mask= alice_mask,</span><br><span class="line">        <span class="comment"># margin=10,  # 设置图片的边缘</span></span><br><span class="line">        max_font_size=<span class="number">150</span>,  <span class="comment"># 显示的最大的字体大小</span></span><br><span class="line">        random_state=<span class="number">50</span>,  <span class="comment"># 为每个单词返回一个PIL颜色</span></span><br><span class="line">        font_path=d + <span class="string">'/static/simfang.ttf'</span> </span><br><span class="line">    ).generate_from_text(text1)</span><br><span class="line">    <span class="comment"># 为图片设置字体</span></span><br><span class="line">    my_font = fm.FontProperties(fname=d + <span class="string">'/static/simfang.ttf'</span>)</span><br><span class="line">    <span class="comment"># 图片背景</span></span><br><span class="line">    bg_color = ImageColorGenerator(alice_mask)</span><br><span class="line">    <span class="comment"># 开始画图</span></span><br><span class="line">    plt.imshow(wc.recolor(color_func=bg_color))</span><br><span class="line">    <span class="comment"># 为云图去掉坐标轴</span></span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    <span class="comment"># 画云图，显示</span></span><br><span class="line">    <span class="comment"># 保存云图到本地</span></span><br><span class="line">    wc.to_file(d + <span class="string">r"/picture/word_cloud.png"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/alice_mask.jpg" alt="原图"></p>
+<p>社会人，佩奇，就是你了</p>
+<p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/word_cloud.png" alt="小猪佩奇"></p>
+<p>成像马马虎虎。评论重点都突出了。好看&gt;很好看&gt;不错&gt;震撼&gt;感动……隐约看到了那句“道路千万条”O(∩_∩)O</p>
+<h2 id="6-结"><a href="#6-结" class="headerlink" title="6 结"></a>6 结</h2><p>看惯了美剧中始终如一的个人英雄主义套路，片中最后各国不分你我，团结协作的小高潮让我心中有了久违的澎湃。不过当时看完脑子里蹦出的唯一念头就是“人啊，最后关头还是得发挥下主观能动性”。还没反应过来，旁边坐的媳妇儿默默来一句“搏一搏，单车变摩托”……哈哈哈，没毛病</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-接口"><span class="toc-text">1 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-接口参数分析"><span class="toc-text">2 接口参数分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-返回数据接口分析"><span class="toc-text">3 返回数据接口分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-数据爬取"><span class="toc-text">4 数据爬取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-maoyan-py"><span class="toc-text">1 maoyan.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-wandou-http-python-request-py"><span class="toc-text">2 wandou_http_python_request.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-main-py"><span class="toc-text">3 main.py</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-可视化分析"><span class="toc-text">5 可视化分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-性别分布"><span class="toc-text">1 性别分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-等级、评分可视化"><span class="toc-text">2 等级、评分可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-每日评论总数可视化"><span class="toc-text">3 每日评论总数可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-社会我佩奇"><span class="toc-text">4 社会我佩奇</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-结"><span class="toc-text">6 结</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 杨政</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://yangzheng.site/passages/2019-02-11-流浪地球词云图分析/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/可视化分析/"><i class="fa fa-tags"></i>可视化分析</a>
+     
+      <a href="/tags/爬虫/"><i class="fa fa-tags"></i>爬虫</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">技术博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://www.ityouknow.com/" target="_blank">纯洁的微笑</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">产品成长</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://tangjie.me/" target="_blank">PM唐杰</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">设计长廊</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://www.voicer.me/" target="_blank">voicer</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: yz944814414@gmail.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/2019-01-05-别把问题想复杂了/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+  <script async>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+  </script>
+
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+  <script async>
+    (function(){
+    var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?":"https://jspassport.ssl.qhimg.com/11.0.1.js?";
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+  </script>
+
+
+    
+  </body>
+</html>

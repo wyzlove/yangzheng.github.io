@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="Dong Yuanxin">
+  
+  
+  <title> Material design 中的“ do ” or “don&#39;t”(一) | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Material Design,material design,">
+  
+
+  
+  <meta name="description" content="————让开发者单独为之适配的设计，都称不上好的设计">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz","appkey":"WaR7nrzhliHj9aVwdQzkdlGd","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "Dong Yuanxin",
+    share: {"twitter":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">杨政</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 一个人写东西的地方</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/wyzlove" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2016-08-20
+    </span>
+    
+      <span>
+        | <a href="/categories/Material-Design/"><i class="fa fa-bookmark"></i>Material Design</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+     Material design 中的“ do ” or “don't”(一)
+  </h1>
+  
+  <article class="passage-article">
+    <p>Material design中给开发和设计者列举了各类 do和don’t案例，值得借鉴，这里作为学习笔记对各部分进行总结和整理，不定期更新。</p>
+<blockquote>
+<h4 id="menus"><a href="#menus" class="headerlink" title="menus"></a>menus</h4></blockquote>
+<p>菜单展示了一个功能选择列表，每一个菜单项都是一个离散的选项或者动作，并且影响到应用、视图或者视图中选中的按钮。<br>a、控制按钮或标签应该简明准确地反映出菜单中包含的菜单项</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/1-1.png" alt="1"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/1.png" alt="2"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>b、菜单展示在触发它的元素之上，当前被选中的菜单项显示在菜单列表顶部。但是不要重复选中的菜单项</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/2.png" alt="3"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/2-2.png" alt="4"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>c、菜单项打开时，选中项需要和被触发元素保持水平对齐（原文是： When opened, simple menus attempt to vertically align the currently selected menu item with the list item. The currently selected menu item is highlighted.但感觉不是一个意思）</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/3.png" alt="3"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/4.png" alt="4"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>不要将菜单列表的首选项任意排列</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/5.png" alt="5"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>don’t</td>
+</tr>
+</tbody>
+</table>
+<p> d、当靠近屏幕底部时，重新调整菜单项的位置，保证所有的选项都可见（下图中，被选择的菜单项按道理应该处在触发元素之上，但是这样会导致菜单中的部分选项超出了屏幕，因此重新调整了菜单项位置）<br>| <img src="http://oc5ntat3u.bkt.clouddn.com/6.png" alt="6">  |<br>| ——–  |<br>| do     | </p>
+<p>e、菜单项处在触发元素的上面，不是下面</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/7.png" alt="7"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/8.png" alt="8"></th>
+<th style="text-align:center"><img src="http://oc5ntat3u.bkt.clouddn.com/9.png" alt="9"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+<td style="text-align:center">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>f、如果菜单项的文本长到需要换行显示（不要省略），就用简单的弹框来代替吧。简单的弹出框的行高是可以改变的</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/10.png" alt="10"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/11.png" alt="11"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>g、当菜单的最大高度应该保证至少一行选项的高度，但要小于可视高度，确保可以点击菜单外的区域可以关闭菜单（当菜单内容是可滚动时）</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/12.png" alt="12"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/13.png" alt="13"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>h、菜单通常与选项列表的首项左对齐，但不会基于触摸的位置展示菜单<br>| <img src="http://oc5ntat3u.bkt.clouddn.com/14.png" alt="14">   |<br>| ——–  |<br>| do        |</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/15.png" alt="15"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>don’t</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="snackbars"><a href="#snackbars" class="headerlink" title="snackbars"></a>snackbars</h4></blockquote>
+<p>是一个针对操作的文本型反馈机制，是toast的加强版，常以一个矩形的小弹框形式出现在屏幕下方。在z轴上和FAB高度相同（如果FAB是在屏幕下方，snackbars会将FAB顶上去，具体效果可参见inbox ），比对话框、底部弹框列表、导航抽屉的高度低。</p>
+<p>a、snackbars 是一个简单的文本型反馈，不包含icon/图片</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/16.png" alt="16"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/17.png" alt="17"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>b、snackbars 超时、用户进行其他触摸操作时会消失，不会持续存在，更不会多个进行叠加</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/18.png" alt="18"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/19.png" alt="19"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>c、最多0-1个操作，不包含取消按钮（如果需要两个或者两个以上时，应该使用对话框，其中一个是取消操作，另外如果snackbar 提示中的操作重要到需要打断当前正在进行的操作时，应当使用提示框而非snackerbar）</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/20.png" alt="20"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/21.png" alt="21"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>d、不要和FAB叠加（snackbar和FAB高度相同，同时出现时，FAB需要在同一个平面上垂直移动到snackbar 的上方）</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/22.png" alt="22"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/23.png" alt="23"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="steppers"><a href="#steppers" class="headerlink" title="steppers"></a>steppers</h4></blockquote>
+<p>通过数字标示展示某个过程的进度，web端或平板设备中较多见，移动端样式如：<br>|  <img src="http://oc5ntat3u.bkt.clouddn.com/24.png" alt="24">       | <img src="http://oc5ntat3u.bkt.clouddn.com/25.png" alt="25">   |<br>| ——–   | —–:  | </p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/26.png" alt="26"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+</tr>
+</tbody>
+</table>
+<p>单个steppers中不要再嵌套steppers<br> <img src="http://oc5ntat3u.bkt.clouddn.com/27.png" alt="27"><br>don’t  </p>
+<blockquote>
+<h4 id="tabs"><a href="#tabs" class="headerlink" title="tabs"></a>tabs</h4></blockquote>
+<p>用于有关联的分组视图和功能之间的探索和切换；一组 tabs 中的所有内容应该互相关联并且在同一个主题下（例如：设置、指南），但是每个 tab 又是相互独立的。</p>
+<p>a、tabs中的分组内容/功能应该是同等重要的</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/28.png" alt="28"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/29.png" alt="29"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>b、tabs应该显示在一行，不要显示在一列</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/30.png" alt="30"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/31.png" alt="31"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>ps：有个疑惑，apple music 中新内容 为什么用spinner，而不用 scrollable tabs？</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/32.png" alt="32"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>c、tabs不要使用嵌套，即一个tab下不要包含另一组tabs</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/33.png" alt="33"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/34.png" alt="34"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>d、如果一个tab标签长度超过了规定的tab 的最大宽度，可以换行并截断显示（不能影响理解），也可以使用scrollable tabs<br>| <img src="http://oc5ntat3u.bkt.clouddn.com/35.png" alt="35">   | <img src="http://oc5ntat3u.bkt.clouddn.com/36.png" alt="36"> |<br>| ——–  | —–:  |<br>| do   | 截断太多，让用户难以理解 | </p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/37.png" alt="37"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/38.png" alt="38"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不要改变tab标签的长度</td>
+<td style="text-align:right">图片和文字等格式不要混用，统一使用文字或图片</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="tooltips"><a href="#tooltips" class="headerlink" title="tooltips"></a>tooltips</h4></blockquote>
+<p>功能贴士（工具提示）<br>用法：具有交互性质的图标（非文字），在用户悬停、保持按压等状态下，显示功能提示，具有帮助说明的作用</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/39.png" alt="39"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/40.png" alt="40"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>a、tooltips 只用于具有交互性质的图标，非文字</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/41.png" alt="41"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/42.png" alt="42"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>b、提示内容为无格式的文本，不支持 富文本（图片或者具有格式的文本等）</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/43.png" alt="43"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/44.png" alt="44"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td style="text-align:right">don’t</td>
+</tr>
+</tbody>
+</table>
+<p>说明：<br>1、material design中的新组件， andriod design （4.x）中应该没有提到类似的功能组件<br>2、一般在操作栏 功能按钮按压时比较常见<br>3、移动端tooltips显示的条件是功能icon处于保持按压状态才会出现，国内用户的操作习惯可能难以注意到这一点</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://oc5ntat3u.bkt.clouddn.com/45.png" alt="45"></th>
+<th style="text-align:right"><img src="http://oc5ntat3u.bkt.clouddn.com/46.png" alt="46"></th>
+<th style="text-align:center"><img src="http://oc5ntat3u.bkt.clouddn.com/47.png" alt="47"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>哔哩哔哩动画  4.22.0 搜索icon按压时会出现tooltips，但是不知为什么下载没有</td>
+<td style="text-align:right">果壳精选 4.2.0 同样的点击分享出现tooltips，喜欢却没有</td>
+<td style="text-align:center">instapaper instapaper中的操作栏中每个功能icon都有相应的tooltips</td>
+</tr>
+</tbody>
+</table>
+<p><em>未完待续~</em></p>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#menus"><span class="toc-text">menus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#snackbars"><span class="toc-text">snackbars</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#steppers"><span class="toc-text">steppers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tabs"><span class="toc-text">tabs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tooltips"><span class="toc-text">tooltips</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 杨政</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://yangzheng.site/passages/2016-08-20-Material design 中的“ do ” or “don't”(一)/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/material-design/"><i class="fa fa-tags"></i>material design</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">技术博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://www.ityouknow.com/" target="_blank">纯洁的微笑</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">产品成长</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://tangjie.me/" target="_blank">PM唐杰</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">设计长廊</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://www.voicer.me/" target="_blank">voicer</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: yz944814414@gmail.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/2017-03-16-使用脚本安装 setuptools、pip/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/2016-08-19-Material Design 8月 更新 通知、小部件、确认和导航/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+  <script async>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+  </script>
+
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+  <script async>
+    (function(){
+    var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?":"https://jspassport.ssl.qhimg.com/11.0.1.js?";
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+  </script>
+
+
+    
+  </body>
+</html>
