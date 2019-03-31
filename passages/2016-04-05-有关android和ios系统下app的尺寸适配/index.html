@@ -6,12 +6,12 @@
   <meta name="author" content="Dong Yuanxin">
   
   
-  <title>有关android和ios系统下app的尺寸适配 | Hexo</title>
+  <title>有关android和ios系统下app的尺寸适配 | 杨政</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="学习笔记,产品,设计,">
+    <meta name="keywords" content="产品,产品学习,android,">
   
 
   
@@ -45,7 +45,7 @@
     is_post: true,
     lock: false,
     author: "Dong Yuanxin",
-    share: {"twitter":true,"qq":true,"wechat":true},
+    share: {"qq":true,"wechat":true},
     mathjax: true,
     page_type: "",
     root: "/"
@@ -160,7 +160,7 @@
     </span>
     
       <span>
-        | <a href="/categories/学习笔记/"><i class="fa fa-bookmark"></i>学习笔记</a>
+        | <a href="/categories/产品/"><i class="fa fa-bookmark"></i>产品</a>
       </span>
     
     
@@ -174,32 +174,28 @@
   </h1>
   
   <article class="passage-article">
-    
+    <p></p>
 
+<li><p>dpi: dot per inch，像素点密度，每英寸多少点，该值越高，则图片越细腻</p>
+</li>
+<li><p>dp: dip，Density-independent pixel, 是安卓开发用的长度单位，1dp表示在屏幕像素点密度为160ppi时1px长度</p>
+</li>
+<li><p>sp: scale-independent pixel，安卓开发用的字体大小单位</p>
+</li>
 
-<blockquote>
-<ul>
-<li>dpi: dot per inch，像素点密度，每英寸多少点，该值越高，则图片越细腻</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>dp: dip，Density-independent pixel, 是安卓开发用的长度单位，1dp表示在屏幕像素点密度为160ppi时1px长度</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>sp: scale-independent pixel，安卓开发用的字体大小单位</li>
-</ul>
-</blockquote>
-<h3 id="2-ios"><a href="#2-ios" class="headerlink" title="2.ios"></a>2.ios</h3><p>首先，明确一点，我们常说的手机分辨率，指的是手机屏幕的像素尺寸。一般地，屏幕的像素尺寸和物理尺寸并没有一定的比例关系，如iphone 3gs屏幕像素分别为 320<em>480，iPhone 4/4s的则刚好是它的两倍，640</em>960。但他们的屏幕尺寸都是3.5英寸。</p>
+<!-- more -->
+<h2 id="2-ios"><a href="#2-ios" class="headerlink" title="2.ios"></a>2.ios</h2><p>首先，明确一点，我们常说的手机分辨率，指的是手机屏幕的像素尺寸。一般地，屏幕的像素尺寸和物理尺寸并没有一定的比例关系，如iphone 3gs屏幕像素分别为 320<em>480，iPhone 4/4s的则刚好是它的两倍，640</em>960。但他们的屏幕尺寸都是3.5英寸。</p>
 <p> <img src="http://image.woshipm.com/wp-files/2015/06/ef64969c0879b79f541276afd7e6ef2c.png" alt="manager1"></p>
 <p>从上图可以看出，retina屏将2<em>2个像素当做1</em>1像素来用，很明显，两者的显示内容一致，但是iPhone4s的retina屏幕的画质要更清晰。此时引入像素密度的概念：PPI(Pixels per inch)，准确的说是对角线为1英寸的正方形所拥有的像素点数量。像素密度越高，代表屏幕显示效果越精细。</p>
-<p>以普通屏为基准，Retina屏定义了一个2倍的倍率(iPhone 6plus为3倍)。<strong><em>实际像素尺寸除以倍率，就得到逻辑像素尺寸（即开发者对软件定义的像素尺寸）</em></strong>。只要两个屏幕逻辑像素相同，它们的实际显示效果就是相同的。<br><img src="http://img.blog.csdn.net/20141226185359140" alt="manager2"><br><img src="http://img.blog.csdn.net/20141226185427703" alt="manager3"></p>
-<h3 id="3-android"><a href="#3-android" class="headerlink" title="3.android"></a>3.android</h3><p><img src="http://image.woshipm.com/wp-files/2015/07/QQ20150717160404.png" alt="manager5"><br>如图所示，1dp定义为屏幕密度值为160ppi时的1px，即，在mdpi时，1dp = 1px。<br>以mdpi为标准，这些屏幕的密度值比为：ldpi : mdpi : hdpi : xhdpi : xxhdpi = 0.75 : 1 : 1.5 : 2 : 3；即，在xhdpi的密度下，1dp=2px；在hdpi情况下，1dp=1.5px。其他类推。</p>
+<p>以普通屏为基准，Retina屏定义了一个2倍的倍率(iPhone 6plus为3倍)。<strong><em>实际像素尺寸除以倍率，就得到逻辑像素尺寸（即开发者对软件定义的像素尺寸）</em></strong>。只要两个屏幕逻辑像素相同，它们的实际显示效果就是相同的。</p>
+<p>![manager2](<a href="http://img.blog.csdn.net/20141226185359140" target="_blank" rel="noopener">http://img.blog.csdn.net/20141226185359140</a></p>
+<p><img src="http://img.blog.csdn.net/20141226185427703" alt="manager3"></p>
+<h2 id="3-android"><a href="#3-android" class="headerlink" title="3.android"></a>3.android</h2><p><img src="http://image.woshipm.com/wp-files/2015/07/QQ20150717160404.png" alt="manager5"><br>如图所示，1dp定义为屏幕密度值为160ppi时的1px，即，在mdpi时，1dp = 1px。<br>以mdpi为标准，这些屏幕的密度值比为：ldpi : mdpi : hdpi : xhdpi : xxhdpi = 0.75 : 1 : 1.5 : 2 : 3；即，在xhdpi的密度下，1dp=2px；在hdpi情况下，1dp=1.5px。其他类推。</p>
 <p><img src="http://image.woshipm.com/wp-files/2015/06/c2f17b47803db63a55d90c2da54e3087.png" alt="manager4"></p>
-<h3 id="4-web"><a href="#4-web" class="headerlink" title="4.web"></a>4.web</h3><p>和app的显示方式一样，浏览器会根据逻辑像素来渲染页面，以iPhone 5为例，屏幕的分辨率是640x1136，倍率是2。浏览器会认为屏幕的分辨率是320x568。所以在制作页面时，无论什么样的屏幕，倍率是多少，都按逻辑像素尺寸来设计和开发页面。只不过在准备资源图的时候，需要准备2倍大小的图，通过代码把它缩成1倍大小显示，才能保证清晰。</p>
-<p>###引用<br>1、[iOS 的 APP 在系统中如何适应 iPhone 5s/6/6 Plus 三种屏幕的尺寸？][1]<br>2、[iPhone屏幕尺寸、分辨率及适配][2]<br>3、[手机APP UI设计尺寸基础知识][3]<br>  [1]: <a href="https://www.zhihu.com/question/25421514" target="_blank" rel="noopener">https://www.zhihu.com/question/25421514</a><br>  [2]: <a href="http://blog.csdn.net/phunxm/article/details/42174937" target="_blank" rel="noopener">http://blog.csdn.net/phunxm/article/details/42174937</a><br>  [3]: <a href="http://www.woshipm.com/pd/160256.html" target="_blank" rel="noopener">http://www.woshipm.com/pd/160256.html</a></p>
+<h2 id="4-web"><a href="#4-web" class="headerlink" title="4.web"></a>4.web</h2><p>和app的显示方式一样，浏览器会根据逻辑像素来渲染页面，以iPhone 5为例，屏幕的分辨率是640x1136，倍率是2。浏览器会认为屏幕的分辨率是320x568。所以在制作页面时，无论什么样的屏幕，倍率是多少，都按逻辑像素尺寸来设计和开发页面。只不过在准备资源图的时候，需要准备2倍大小的图，通过代码把它缩成1倍大小显示，才能保证清晰。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>1、<a href="https://www.zhihu.com/question/25421514" target="_blank" rel="noopener">iOS 的 APP 在系统中如何适应 iPhone 5s/6/6 Plus 三种屏幕的尺寸？</a></p>
+<p>2、<a href="http://blog.csdn.net/phunxm/article/details/42174937" target="_blank" rel="noopener">iPhone屏幕尺寸、分辨率及适配</a></p>
+<p>3、<a href="http://www.woshipm.com/pd/160256.html" target="_blank" rel="noopener">手机APP UI设计尺寸基础知识</a></p>
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
@@ -207,7 +203,7 @@
     <span>目录</span>
   </div>
   <div class="table-content-main">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ios"><span class="toc-text">2.ios</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-android"><span class="toc-text">3.android</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-web"><span class="toc-text">4.web</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ios"><span class="toc-text">2.ios</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-android"><span class="toc-text">3.android</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-web"><span class="toc-text">4.web</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li></ol>
   </div>
 </aside>
   
@@ -227,7 +223,9 @@
   
     <div class="passage-tags">
      
-      <a href="/tags/产品-设计/"><i class="fa fa-tags"></i>产品,设计</a>
+      <a href="/tags/产品学习/"><i class="fa fa-tags"></i>产品学习</a>
+     
+      <a href="/tags/android/"><i class="fa fa-tags"></i>android</a>
     
     </div>
   
@@ -324,13 +322,6 @@
             
           </div>
         
-          <div>
-            <img src="/images/alipay.png" alt="AliPay">
-            
-              <p>AliPay</p>
-            
-          </div>
-        
       </div>
       <div id="site-layer-welcome" style="display:none;"></div>
     </div>
@@ -368,10 +359,6 @@
   </div>
 </div>
     <div id="share-btn">
-  
-    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
-      <i class="fa fa-twitter"></i>
-    </a>
   
   
   

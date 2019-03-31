@@ -6,16 +6,16 @@
   <meta name="author" content="Dong Yuanxin">
   
   
-  <title>流浪地球猫眼短评可视化分析 | Hexo</title>
+  <title>流浪地球猫眼短评可视化分析 | 杨政</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="产品,可视化分析,爬虫,">
+    <meta name="keywords" content="产品,可视化分析,爬虫,python,">
   
 
   
-  <meta name="description" content="杨政的小站">
+  <meta name="description" content="《流浪地球》突然越来越火……嗯 主旋律 总能激发人原始的感动所以趁这会儿有时间，爬一爬影评，试着可视化分析下，看看舆论的风怎么吹~">
 
   
 
@@ -45,7 +45,7 @@
     is_post: true,
     lock: false,
     author: "Dong Yuanxin",
-    share: {"twitter":true,"qq":true,"wechat":true},
+    share: {"qq":true,"wechat":true},
     mathjax: true,
     page_type: "",
     root: "/"
@@ -178,10 +178,7 @@
     </div>
   
   <article class="passage-article">
-    <p>《流浪地球》突然越来越火……</p>
-<p>嗯 主旋律 总能激发人原始的感动</p>
-<p>所以趁这会儿有时间，爬一爬影评，试着可视化分析下，看看舆论的风怎么吹~</p>
-<h2 id="1-接口"><a href="#1-接口" class="headerlink" title="1 接口"></a>1 接口</h2><p>直接选择猫眼的短评接口，方便。</p>
+    <h2 id="1-接口"><a href="#1-接口" class="headerlink" title="1 接口"></a>1 接口</h2><p>直接选择猫眼的短评接口，方便。</p>
 <p>记得之前一直是<code>http://m.maoyan.com/mmdb/comments/movie/&lt;movieId&gt;.json</code>。今儿试了下<code>cmts</code>字段总是空的，换了代理Ip也没用。无奈只能硬着头皮，去<code>http://m.maoyan.com/movie/248906/comments?_v_=yes</code>去看看是不是改了新接口</p>
 <p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/%E7%8C%AB%E7%9C%BC%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%831.jpg" alt="流浪地球-接口1"></p>
 <p>没错了，分页加载的新接口<code>http://m.maoyan.com/review/v2/comments.json?movieId=248906&amp;userId=-1&amp;offset=420&amp;limit=15&amp;ts=1549767416000&amp;type=3</code></p>
@@ -279,7 +276,6 @@
 <p><img src="https://wyzlove-1253226088.cos.ap-chengdu.myqcloud.com/yangzhengBlog/%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83/word_cloud.png" alt="小猪佩奇"></p>
 <p>成像马马虎虎。评论重点都突出了。好看&gt;很好看&gt;不错&gt;震撼&gt;感动……隐约看到了那句“道路千万条”O(∩_∩)O</p>
 <h2 id="6-结"><a href="#6-结" class="headerlink" title="6 结"></a>6 结</h2><p>看惯了美剧中始终如一的个人英雄主义套路，片中最后各国不分你我，团结协作的小高潮让我心中有了久违的澎湃。不过当时看完脑子里蹦出的唯一念头就是“人啊，最后关头还是得发挥下主观能动性”。还没反应过来，旁边坐的媳妇儿默默来一句“搏一搏，单车变摩托”……哈哈哈，没毛病</p>
-
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
@@ -310,6 +306,8 @@
       <a href="/tags/可视化分析/"><i class="fa fa-tags"></i>可视化分析</a>
      
       <a href="/tags/爬虫/"><i class="fa fa-tags"></i>爬虫</a>
+     
+      <a href="/tags/python/"><i class="fa fa-tags"></i>python</a>
     
     </div>
   
@@ -406,13 +404,6 @@
             
           </div>
         
-          <div>
-            <img src="/images/alipay.png" alt="AliPay">
-            
-              <p>AliPay</p>
-            
-          </div>
-        
       </div>
       <div id="site-layer-welcome" style="display:none;"></div>
     </div>
@@ -450,10 +441,6 @@
   </div>
 </div>
     <div id="share-btn">
-  
-    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
-      <i class="fa fa-twitter"></i>
-    </a>
   
   
   
